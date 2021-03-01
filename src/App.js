@@ -42,7 +42,9 @@ class App extends Component {
         const locationEvents =
           location === 'all'
             ? response.events
-            : response.events.filter((event) => event.location === location);
+            : response.events.filter(
+              (event) => event.location === location
+            );
         const events = locationEvents.slice(0, numberOfEvents);
         return this.setState({
           events: events,
@@ -56,8 +58,8 @@ class App extends Component {
           currentLocation === 'all'
             ? response.events
             : response.events.filter(
-                (event) => event.location === currentLocation
-              );
+              (event) => event.location === currentLocation
+            );
         const events = locationEvents.slice(0, eventCount);
         return this.setState({
           events: events,
@@ -89,14 +91,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <CitySearch
-          updateEvents={this.updateEvents}
-          locations={this.state.locations}
-        />
-        <NumberOfEvents
-          updateEvents={this.updateEvents}
-          numberOfEvents={this.state.numberOfEvents}
-        />
+        <CitySearch updateEvents={this.updateEvents} locations={this.state.locations} />
+        <NumberOfEvents updateEvents={this.updateEvents} numberOfEvents={this.state.numberOfEvents} />
         <div className="data-vis-wrapper">
           <ResponsiveContainer height={400}>
             <EventGenre events={this.state.events} />
